@@ -1,105 +1,105 @@
-package task3;
-
 public class FitnessClub {
-    private Membership[] gymMembers;
-    private Membership[] poolMembers;
-    private Membership[] groupMembers;
-    private int gymCount, poolCount, groupCount;
+    // массивы
+    public Abonement[] gymArray = new Abonement[50];
+    public Abonement[] poolArray = new Abonement[50];
+    public Abonement[] spaArray = new Abonement[50];
+    public Abonement[] groupArray = new Abonement[50];
 
-    public FitnessClub() {
-        gymMembers = new Membership[50];
-        poolMembers = new Membership[20];
-        groupMembers = new Membership[30];
-        gymCount = poolCount = groupCount = 0;
+    public int gymCounter = 0;
+    public int poolCounter = 0;
+    public int spaCounter = 0;
+    public int groupCounter = 0;
+
+    // Проверка времени 6-24
+    private boolean isClubOpen(int hour) {
+        return hour >= 6 && hour <= 24;
     }
 
-    public void registerInZone(Membership m, String zone) {
-        if (zone.equals("зал")) {
-            gymMembers[gymCount] = m;
-            gymCount++;
-            System.out.println(m.getOwner().getName() + " в зале");
+    public boolean checkAccess(Abonement abon, String zone, int time) {
+        // открыт ли клуб вообще
+        if (!isClubOpen(time)) {
+            return false;
         }
-        else if (zone.equals("бассейн")) {
-            if (m.mozhnoProiti(12, zone)) {
-                poolMembers[poolCount] = m;
-                poolCount++;
-                System.out.println(m.getOwner().getName() + " в бассейне");
-            } else {
-                System.out.println("Нельзя в бассейн!");
+
+        if (zone.equals("gym")) return abon.canAccessGym(time);
+        if (zone.equals("pool")) return abon.canAccessPool(time);
+        if (zone.equals("spa")) return abon.canAccessSpa(time);
+        if (zone.equals("group")) return abon.canAccessGroup(time);
+        return false;
+    }
+
+    public void enterZone(Abonement abon, String zone, int hour) {
+        // проверка работы клуба
+        if (!isClubOpen(hour)) {
+            System.out.println("Отказ! Клуб закрыт в " + hour + ":00 (работает с 6 до 24)");
+            return;
+        }
+
+        if (!checkAccess(abon, zone, hour)) {
+            System.out.println("Отказ! " + abon.client.name + " " +
+                    abon.client.surname + " не может в " + getZoneName(zone) + " в " + hour + ":00");
+            return;
+        }
+
+        if (zone.equals("gym")) {
+            if (gymCounter < 50) {
+                gymArray[gymCounter] = abon;
+                gymCounter++;
+                System.out.println(abon.client.name + " " + abon.client.surname +
+                        " вошел в тренажерный зал в " + hour + ":00");
+            }
+        } else if (zone.equals("pool")) {
+            if (poolCounter < 50) {
+                poolArray[poolCounter] = abon;
+                poolCounter++;
+                System.out.println(abon.client.name + " " + abon.client.surname +
+                        " вошел в бассейн в " + hour + ":00");
+            }
+        } else if (zone.equals("spa")) {
+            if (spaCounter < 50) {
+                spaArray[spaCounter] = abon;
+                spaCounter++;
+                System.out.println(abon.client.name + " " + abon.client.surname +
+                        " пошел в спа-зону в " + hour + ":00");
+            }
+        } else if (zone.equals("group")) {
+            if (groupCounter < 50) {
+                groupArray[groupCounter] = abon;
+                groupCounter++;
+                System.out.println(abon.client.name + " " + abon.client.surname +
+                        " пошел на групповые занятия в " + hour + ":00");
             }
         }
-        else if (zone.equals("групповые")) {
-            groupMembers[groupCount] = m;
-            groupCount++;
-            System.out.println(m.getOwner().getName() + " на групповых");
-        }
     }
 
-    public void checkZoneAccess(String zone, int currentHour) {
-        System.out.println("\nПроверка доступа в " + zone + " (час: " + currentHour + ")");
-
-        Membership[] zoneArray = null;
-        int count = 0;
-
-        if (zone.equals("зал")) {
-            zoneArray = gymMembers;
-            count = gymCount;
-        } else if (zone.equals("бассейн")) {
-            zoneArray = poolMembers;
-            count = poolCount;
-        } else if (zone.equals("групповые")) {
-            zoneArray = groupMembers;
-            count = groupCount;
-        }
-
-        if (zoneArray != null) {
-            for (int i = 0; i < count; i++) {
-                Membership m = zoneArray[i];
-                boolean canEnter = m.mozhnoProiti(currentHour, zone);
-                System.out.print(m.getOwner().getName() + " (" + m.getType() + "): ");
-                System.out.println(canEnter ? "можно" : "нельзя");
-            }
-        }
+    private String getZoneName(String zone) {
+        if (zone.equals("gym")) return "тренажерный зал";
+        if (zone.equals("pool")) return "бассейн";
+        if (zone.equals("spa")) return "спа-зону";
+        if (zone.equals("group")) return "групповые занятия";
+        return zone;
     }
 
-    public Membership changeMembership(Client client, String newType) {
-        System.out.println("Меняем абонемент для " + client.getName());
+    public void closeClub() {
+        System.out.println("\nКлуб закрывается:");
+        System.out.println("Клуб закрыт, все клиенты покинули зал");
 
-        Membership newMember = null;
-        if (newType.equals("Обычный")) {
-            newMember = new RegularMembership(client);
-        } else if (newType.equals("VIP")) {
-            newMember = new VIPMembership(client);
-        }
-
-        System.out.println("Создан новый абонемент типа: " + newType);
-        return newMember;
+        // очистка массивов
+        gymCounter = 0;
+        poolCounter = 0;
+        spaCounter = 0;
+        groupCounter = 0;
     }
 
-    public void close() {
-        System.out.println("\nФитнес-клуб закрывается!");
-        for (int i = 0; i < gymCount; i++) {
-            System.out.println(gymMembers[i].getOwner().getName() + " покидает зал");
-            gymMembers[i] = null;
-        }
-        gymCount = 0;
-        System.out.println("Все клиенты ушли");
-    }
+    public Abonement changeAbonement(Abonement oldAbon, boolean toVIP) {
+        System.out.println("Клиент: " + oldAbon.client.name + " " + oldAbon.client.surname);
 
-    public void showMembers() {
-        System.out.println("\nКлиенты фитнес-клуба:");
-
-        Client[] allClients = new Client[100];
-        int clientCount = 0;
-
-        for (int i = 0; i < gymCount; i++) {
-            allClients[clientCount] = gymMembers[i].getOwner();
-            clientCount++;
-        }
-
-        System.out.println("Всего клиентов: " + clientCount);
-        for (int i = 0; i < clientCount; i++) {
-            allClients[i].printInfo();
+        if (toVIP) {
+            System.out.println("Меняем обычный на VIP");
+            return new VIPAbonement(oldAbon.client);
+        } else {
+            System.out.println("Меняем VIP на обычный");
+            return new Abonement(oldAbon.client);
         }
     }
 }

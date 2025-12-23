@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e670ecaf-b7f7-4ec8-be80-63a12cadc3dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/task3/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/task3/FitnessClub.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/task3/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/task3/Membership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/task3/RegularMembership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/task3/VIPMembership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/task3/Abonement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/task3/VIPAbonement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/javabase/fds8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/FitnessClub.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/Membership.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/RegularMembership.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/javabase/task3/VIPMembership.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/task3/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/FitnessClub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/task3/FitnessClub.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/task3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/Membership.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/RegularMembership.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/task3/VIPMembership.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +93,8 @@
       <workItem from="1761250801691" duration="2868000" />
       <workItem from="1766324536928" duration="4246000" />
       <workItem from="1766517507821" duration="1783000" />
+      <workItem from="1766525334787" duration="3529000" />
+      <workItem from="1766528913090" duration="405000" />
     </task>
     <servers />
   </component>

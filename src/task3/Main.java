@@ -1,78 +1,52 @@
-package task3;
-
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Фитнес клуб\n");
+
+        // клиенты
+        Client client1 = new Client(101, "Иван", "Сидоров", 1995);
+        Client client2 = new Client(102, "Мария", "Петрова", 1990);
+        Client client3 = new Client(103, "Алексей", "Иванов", 1988);
+
+        // показываем
+        System.out.println("Зарегистрированные клиенты:");
+        client1.printClient();
+        client2.printClient();
+        client3.printClient();
+        System.out.println();
+
+        // абонементы (мария - вип)
+        System.out.println("Информация об абонементах: ");
+        Abonement abon1 = new Abonement(client1);
+        System.out.println("Иван Сидоров - обычный абонемент");
+
+        VIPAbonement abon2 = new VIPAbonement(client2);
+        System.out.println("Мария Петрова - VIP абонемент");
+
+        Abonement abon3 = new Abonement(client3);
+        System.out.println("Алексей Иванов - обычный абонемент");
+        System.out.println();
+
         FitnessClub club = new FitnessClub();
-        Scanner scan = new Scanner(System.in);
 
-        Client client1 = new Client(1, "Иван", "Иванов", 1990);
-        Client client2 = new Client(2, "Петр", "Петров", 1985);
+        System.out.println("Посещения (3 посещения): \n");
 
-        Membership mem1 = new RegularMembership(client1);
-        Membership mem2 = new VIPMembership(client2);
+        //Иван пытается в зал в 5:00 (клуб закрыт)
+        System.out.println("1. Иван Сидоров в 5:00:");
+        club.enterZone(abon1, "gym", 5);
 
-        club.registerInZone(mem1, "зал");
-        club.registerInZone(mem2, "зал");
-        club.registerInZone(mem2, "бассейн");
+        //Мария (VIP) в спа в 10:00
+        System.out.println("\n2. Мария Петрова (VIP) в 10:00:");
+        club.enterZone(abon2, "spa", 10);
 
-        boolean rabotaet = true;
-        while (rabotaet) {
-            System.out.println("\nГлавное Меню:");
-            System.out.println("1.Показать клиентов");
-            System.out.println("2.Проверить доступ в зону");
-            System.out.println("3.Сменить абонемент");
-            System.out.println("4.Закрыть клуб");
-            System.out.println("0.Выход");
-            System.out.print("Выбор: ");
+        //Алексей в зал в 10:00
+        System.out.println("\n3. Алексей Иванов в 10:00:");
+        club.enterZone(abon3, "gym", 10);
 
-            int vybor = scan.nextInt();
+        // Закрытие клуба
+        club.closeClub();
 
-            switch(vybor) {
-                case 1:
-                    club.showMembers();
-                    break;
-
-                case 2:
-                    System.out.print("Зона (зал/бассейн/групповые): ");
-                    String zona = scan.next();
-                    System.out.print("Текущий час (0-23): ");
-                    int chas = scan.nextInt();
-                    club.checkZoneAccess(zona, chas);
-                    break;
-
-                case 3:
-                    System.out.print("ID клиента: ");
-                    int id = scan.nextInt();
-                    System.out.print("Новый абонемент (Обычный/VIP): ");
-                    String tip = scan.next();
-
-                    Client clientForChange = null;
-                    if (id == 1) clientForChange = client1;
-                    else if (id == 2) clientForChange = client2;
-
-                    if (clientForChange != null) {
-                        club.changeMembership(clientForChange, tip);
-                    } else {
-                        System.out.println("Клиент не найден");
-                    }
-                    break;
-
-                case 4:
-                    club.close();
-                    break;
-
-                case 0:
-                    rabotaet = false;
-                    System.out.println("До свидания!");
-                    break;
-
-                default:
-                    System.out.println("Неверный выбор!");
-            }
-        }
-
-        scan.close();
+        // смена абонемента
+        System.out.println("\nСмена абонемента: ");
+        Abonement newAbon = club.changeAbonement(abon1, true);
     }
 }
