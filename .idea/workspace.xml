@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e670ecaf-b7f7-4ec8-be80-63a12cadc3dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/BankAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/CreditCard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/itogmdk/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="e670ecaf-b7f7-4ec8-be80-63a12cadc3dd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -52,9 +46,14 @@
     "Application.num6.executor": "Run",
     "Application.num7.executor": "Run",
     "Application.num8.executor": "Run",
+    "CidrDebugProfileConversion": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
